@@ -32,6 +32,7 @@ getting in the way of your workflow
 ## Usage
 
 ### Shallow Dependencies
+
 By default realreq delivers a "shallow" dependency specification, giving you a list of the packages
 directly used by your code:
 
@@ -43,7 +44,8 @@ This is useful for Library maintainers who want to make sure the minimal essenti
 without over specifying the actual requirements for their library.
 
 ### Deep Dependencies
-Alternatively, you can get a "deep" dependency list by using the `-d` flag
+
+Alternatively, you can get a "deep" dependency list by using the `-d` flag:
 
 ```
 realreq -d -s ./path/to/mypackage > requirements.txt
@@ -60,7 +62,6 @@ they were installed with. If the names mismatch, there will be an issue with rea
 find them.
 
 This can be resolved by adding an `--alias`/`-a` flag, mapping the _import_ name to the _install_ name.
-
 
 ```
 realreq -d -s ./path/to/mypackage -a bs4=beautifulsoup4 > requirements.txt
@@ -82,8 +83,14 @@ realreq -d -s ./path/to/mypackage --alias-file realreq-aliases.txt > requirement
 ### Inverted Tree
 
 Sometimes you may want to explore the reasons for certain dependencies. Realreq lets you see an
-inverted tree view that displays all your dependencies and what libraries they are used by. For
-example the inverted tree for realreq's test suite looks like this:
+inverted tree view that displays all your dependencies and what libraries they are used by.
+This is done using the `--invert/-i` flag:
+
+```
+realreq -s ./path/to/mypackage -i
+```
+
+For example the inverted tree for realreq's test suite looks like this:
 
 ```
 - attrs

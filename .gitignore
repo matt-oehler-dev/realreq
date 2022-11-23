@@ -13,3 +13,7 @@ build/*
 .tox/*
 coverage/*
 .coverage
+
+
+# pyenv
+.python-version
